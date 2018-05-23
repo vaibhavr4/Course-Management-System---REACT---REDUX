@@ -75,7 +75,7 @@ class CourseList extends React.Component {
                     <tbody>
                     <tr>
                         <td><input className="form-control" id="titleFld"
-                                   placeholder="Course ID"
+                                   placeholder="Course Title"
                                    onChange={this.titleChanged}/></td>
                         <td><button className="btn btn-primary"
                                     onClick={this.createCourse}>Add</button></td>

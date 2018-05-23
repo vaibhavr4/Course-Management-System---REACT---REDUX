@@ -75,14 +75,14 @@ export default class ModuleList
             })
     }
 
-    renderListOfModules() {
-        let modules = this.state.modules
-            .map(function(module){
-                return <ModuleListItem
-                    module={module} title={module.title} key={module.id}
-                    ></ModuleListItem>
-            });
-        return modules;}
+    // renderListOfModules() {
+    //     let modules = this.state.modules
+    //         .map(function(module){
+    //             return <ModuleListItem
+    //                 module={module} title={module.title} key={module.id}
+    //                 ></ModuleListItem>
+    //         });
+    //     return modules;}
 
     renderModules() {
         let modules = this.state.modules.map((module) => {

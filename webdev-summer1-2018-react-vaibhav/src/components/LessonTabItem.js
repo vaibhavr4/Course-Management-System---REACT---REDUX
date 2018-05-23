@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 export default class LessonTabItem extends React.Component {
     constructor(props) {
@@ -7,23 +7,27 @@ export default class LessonTabItem extends React.Component {
     }
     render() {
         return (
-            <li className="nav-item active">
-                <Link className="nav-link"
-                      to={`/course/`+ this.props.courseId+ `/module/`+this.props.moduleId}
-                      role="pill"
-                      data-toggle="pill">
-                    <div className='row'>
-                        <div className='col-8'>
-                            {this.props.lesson.title}
-                        </div>
-                        <div className='col-1'>
-                            <button onClick={() => {this.props.delete(this.props.lesson.id)}}
-                                    className='btn btn-danger btn-sm'>
-                                <i className="fa fa-trash"/>
-                            </button>
-                        </div>
-                    </div>
-                </Link>
+            <li className="nav-item">
+                <NavLink className="nav-link" to={`/course/
+                ${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}
+                         activeStyle={{
+                             fontWeight: 'bold',
+                             color: 'red',
+
+                         }}>
+                    {this.props.lesson.title}
+                    &nbsp;&nbsp;
+                    <span className="float-right">
+                            <button className=" btn-danger"  onClick={()=>
+                            {this.props.delete
+                            (this.props.lesson.id)}}>
+                    <i className="fa fa-times"></i>
+                </button>
+                </span>
+                </NavLink>
+
+
+
             </li>
         )
     }

@@ -14,7 +14,8 @@ export default class ModuleListItem
                 ${this.props.courseId}/module/${this.props.module.id}`}
                          activeStyle={{
                              fontWeight: 'bold',
-                             color: 'red'
+                             color: 'red',
+
                          }}>
                     {this.props.module.title}
                 </NavLink>
@@ -24,9 +25,7 @@ export default class ModuleListItem
                 (this.props.module.id)}}>
                     <i className="fa fa-trash"></i>
                 </button>
-                <button>
-                    <i className="fa fa-pencil"></i>
-                </button>
+
                 </span>
             </li>
         );}}

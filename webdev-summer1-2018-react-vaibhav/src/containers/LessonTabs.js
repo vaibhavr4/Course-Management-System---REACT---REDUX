@@ -2,17 +2,21 @@ import React from 'react';
 import LessonService from "../services/LessonService";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import LessonTabItem from "../components/LessonTabItem";
-import TopicPills from './TopicPills'
+import TopicPill from './TopicPill'
+import LessonEditor from "./LessonEditor";
+import {BrowserRouter as Router,Route} from 'react-router-dom'
 
 export default class LessonTabs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            moduleId: '',
             courseId: '',
+            moduleId: '',
             lesson: {title: ''},
             lessons: []
         };
+
+
         this.setModuleId = this.setModuleId.bind(this);
         this.setCourseId = this.setCourseId.bind(this);
         this.setLessonTitle = this.setLessonTitle.bind(this);
@@ -20,6 +24,7 @@ export default class LessonTabs extends React.Component {
         this.deleteLesson = this.deleteLesson.bind(this);
         this.lessonService = LessonService.instance;
     }
+
     setModuleId(moduleId) {
         this.setState({moduleId: moduleId});
     }
@@ -72,6 +77,7 @@ export default class LessonTabs extends React.Component {
             .findAllLessonsForModule(courseId, moduleId)
             .then((lessons) => {this.setLessons(lessons);});
     }
+
     renderLessons() {
         if(this.state.lessons === null) {
             return null;
@@ -86,6 +92,10 @@ export default class LessonTabs extends React.Component {
         return (
             lessons
         )
+    }
+
+    renderTopics() {
+        return <Route path='/course/:courseId/module/:moduleId/lesson/:lessonId' component={LessonEditor}/>;
     }
     render() {
         if(this.state.lessons === null) {
@@ -115,9 +125,12 @@ export default class LessonTabs extends React.Component {
                             </a>
                         </li>
                     </ul>
-                    <ul><br/>
-                    <TopicPills/>
-                    </ul>
+                    {/*<ul><br/>*/}
+                        {/*<TopicPill lessonId={this.state.lessonId} moduleId={this.state.moduleId} courseId={this.state.courseId}/>*/}
+                    {/*</ul>*/}
+                    <div className='col-8'>
+                        {this.renderTopics()}
+                    </div>
                 </div>
             )
         }

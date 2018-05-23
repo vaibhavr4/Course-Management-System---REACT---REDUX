@@ -5,6 +5,19 @@ import CourseService from '../services/CourseService'
 class CourseRow extends React.Component {
     constructor(props) { super(props);
         this.courseService = CourseService.instance;}
+
+    getAddTime(time){
+        var currdate = new Date();
+        var old = new Date(time).toDateString();
+        var currtime = new Date(currdate).toDateString();
+        if(old !== currtime) {
+            return old;
+        }
+        else{
+            return new Date(time).toLocaleTimeString();
+        }
+    }
+
     render() {
         return (
             <tr><td>
@@ -14,7 +27,7 @@ class CourseRow extends React.Component {
                 </Link>
                 </td>
                 <td>me</td>
-                <td>today</td>
+                <td>{this.getAddTime(this.props.course.modified)}</td>
                 <td><button className="btn btn-danger"
                             onClick={() => {this.props.delete(this.props.course.id)}}>
                     Delete
