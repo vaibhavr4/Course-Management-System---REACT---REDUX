@@ -7,7 +7,7 @@ export default class LessonTabItem extends React.Component {
     }
     render() {
         return (
-            <li className="nav-item" style={{"border": "1px solid #ddd", "borderRadius": "3px"}}>
+            <li className="nav-item active">
                 <Link className="nav-link"
                       to={`/course/`+ this.props.courseId+ `/module/`+this.props.moduleId}
                       role="pill"

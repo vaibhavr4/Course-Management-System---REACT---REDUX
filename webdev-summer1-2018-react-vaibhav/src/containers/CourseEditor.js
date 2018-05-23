@@ -37,7 +37,7 @@ export default class CourseEditor
     renderTitle() {
         let title = null;
         if(this.state.course.title) {
-            console.log('hello');
+
             return this.state.course.title;
 
         }

@@ -72,6 +72,7 @@ class CourseList extends React.Component {
             <div>
                 <h2>Course List</h2>
                 <table className="table">
+                    <tbody>
                     <tr>
                         <td><input className="form-control" id="titleFld"
                                    placeholder="Course ID"
@@ -80,6 +81,8 @@ class CourseList extends React.Component {
                                     onClick={this.createCourse}>Add</button></td>
 
                     </tr>
+                    </tbody>
+
                 </table>
                 <table className="table">
                     <thead><tr><th>Title</th>

@@ -2,6 +2,7 @@ import React from 'react';
 import LessonService from "../services/LessonService";
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import LessonTabItem from "../components/LessonTabItem";
+import TopicPills from './TopicPills'
 
 export default class LessonTabs extends React.Component {
     constructor(props) {
@@ -95,7 +96,7 @@ export default class LessonTabs extends React.Component {
                     <ul className="nav nav-tabs justify-content-right">
                         {this.renderLessons()}
                         <li id="addLessonFld" className="nav-item">
-                            <a className="nav-link active" href="#">
+                            <a className="nav-link" href="#">
                                 <div className='row'>
                                     <div className='col-8'>
                                         <input className='form-control form-control-sm'
@@ -113,6 +114,9 @@ export default class LessonTabs extends React.Component {
                                 </div>
                             </a>
                         </li>
+                    </ul>
+                    <ul><br/>
+                    <TopicPills/>
                     </ul>
                 </div>
             )

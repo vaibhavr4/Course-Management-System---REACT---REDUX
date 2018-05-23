@@ -15,7 +15,7 @@ export default class CourseManager extends Component
             <div className="container-fluid">
             <h1>Course Manager</h1>
 
-                <Route path="/course"
+                <Route path="/courses"
                        component={CourseList}>
                 </Route>
                 <Route path="/course/:courseId"
