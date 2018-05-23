@@ -12,13 +12,13 @@ export default class ModuleList
         this.state = {
             courseId:'',
             module: { title: '' },
-            modules: [
-                {title: 'Module 1 - jQuery', id: 123},
-                {title: 'Module 2 - React', id: 234},
-                {title: 'Module 3 - Redux', id: 345},
-                {title: 'Module 4 - Angular', id: 456},
-                {title: 'Module 5 - Node.js', id: 567},
-                {title: 'Module 6 - MongoDB', id: 678},]};
+            modules: []};
+                // {title: 'Module 1 - jQuery', id: 123},
+                // {title: 'Module 2 - React', id: 234},
+                // {title: 'Module 3 - Redux', id: 345},
+                // {title: 'Module 4 - Angular', id: 456},
+                // {title: 'Module 5 - Node.js', id: 567},
+                // {title: 'Module 6 - MongoDB', id: 678},]};
 
         this.deleteModule = this.deleteModule.bind(this);
         this.titleChanged = this.titleChanged.bind(this);
@@ -88,15 +88,20 @@ export default class ModuleList
         let modules = this.state.modules.map((module) => {
             return (
                 <ModuleListItem module={module} key={module.id}
-                                delete={this.deleteModule}/>
+                                
+                                delete={this.deleteModule} courseId={this.state.courseId}/>
             )});
         return (<ul className="list-group"> {modules}</ul>)
+    }
+
+    renderLessons() {
+        return <Route path='/course/:courseId/module/:moduleId' component={ModuleEditor}/>;
     }
 
     render() { return (
         <Router>
         <div className="row">
-            <div className="col-5">
+            <div className="col-4">
 
             <h4>Modules for courseId:
                 {this.state.courseId}</h4>
@@ -115,9 +120,10 @@ export default class ModuleList
             {this.renderModules()}
 
         </div>
-                <div className="col-7">
-                    <Route path="/course/:courseId/module/:moduleId"
-                           component={ModuleEditor}/></div>
+
+            <div className='col-8'>
+                {this.renderLessons()}
+            </div>
             </div>
         </Router>
             );}}

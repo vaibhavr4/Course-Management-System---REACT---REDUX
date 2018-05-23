@@ -42,14 +42,23 @@ class CourseList extends React.Component {
         });
     }
     createCourse() {
+        let newCourse;
+        if (this.state.course === undefined || this.state.course.title === '') {
+            newCourse = {title: 'New Course'};
+        } else {
+            newCourse = this.state.course;
+        }
+        newCourse.modified = new Date();
+        newCourse.created = new Date();
         this.courseService
-            .createCourse(this.state.course)
-            .then(() => { this.findAllCourses(); });
+            .createCourse(newCourse)
+            .then(() => {this.findAllCourses();});
+        document.getElementById('titleFld').value = '';
     }
 
-    componentDidMount() {
-        this.findAllCourses();
-    }
+    // componentDidMount() {
+    //     this.findAllCourses();
+    // }
     findAllCourses() {
         this.courseService.findAllCourses()
             .then((courses) => {
@@ -63,15 +72,21 @@ class CourseList extends React.Component {
             <div>
                 <h2>Course List</h2>
                 <table className="table">
-                    <thead><tr><th>Title</th></tr>
                     <tr>
-                        <th><input className="form-control" id="titleFld"
-                                   placeholder="cs101"
-                                   onChange={this.titleChanged}/></th>
-                        <th><button className="btn btn-primary"
-                                    onClick={this.createCourse}>Add</button></th>
+                        <td><input className="form-control" id="titleFld"
+                                   placeholder="Course ID"
+                                   onChange={this.titleChanged}/></td>
+                        <td><button className="btn btn-primary"
+                                    onClick={this.createCourse}>Add</button></td>
 
                     </tr>
+                </table>
+                <table className="table">
+                    <thead><tr><th>Title</th>
+                        <th>Owner</th>
+                        <th>Last modified</th>
+                        <th></th></tr>
+
                     </thead>
                     <tbody>
                     {this.courseRows()}

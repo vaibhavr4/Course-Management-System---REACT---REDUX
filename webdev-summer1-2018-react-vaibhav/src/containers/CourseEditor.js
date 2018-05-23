@@ -1,8 +1,6 @@
 import React from 'react'
 import ModuleList from './ModuleList'
-import LessonTabs from './LessonTabs'
-import TopicPills from './TopicPills'
-import ModuleEditor from './ModuleEditor'
+import CourseService from "../services/CourseService";
 
 export default class CourseEditor
     extends React.Component {
@@ -10,26 +8,48 @@ export default class CourseEditor
     constructor(props) {
         super(props);
         this.selectCourse = this.selectCourse.bind(this);
-        this.state = {courseId: ''};
+        this.state = {courseId: '', course: ''};
+        this.courseService = CourseService.instance;
     }
 
-    // componentDidMount() {
-    //     this.selectCourse(this.props.match.params.courseId);
-    // }
+    componentDidMount() {
+        this.selectCourse(this.props.match.params.courseId);
+        this.getCourseById(this.props.match.params.courseId);
+    }
 
     selectCourse(courseId) {
         this.setState({courseId: courseId});
     }
 
 
-    componentWillReceiveProps(newProps){
+    componentWillReceiveProps(newProps) {
         this.selectCourse(newProps.match.params.courseId);
+        this.getCourseById(newProps.match.params.courseId);
+    }
+
+    getCourseById(courseId) {
+        this.courseService
+            .getCourseById(courseId)
+            .then((course) => {
+                this.setState({course: course});
+            });
+    }
+    renderTitle() {
+        let title = null;
+        if(this.state.course.title) {
+            console.log('hello');
+            return this.state.course.title;
+
+        }
+        return (
+            title
+        )
     }
 
     render() { return(
         <div>
-            <h3>Course {this.state.courseId}</h3>
-        <div className="row">
+            <h3>Course {this.renderTitle()}</h3>
+        <div>
             {/*<div className="col-4">*/}
                 <ModuleList courseId={this.state.courseId}/>
             {/*</div>*/}

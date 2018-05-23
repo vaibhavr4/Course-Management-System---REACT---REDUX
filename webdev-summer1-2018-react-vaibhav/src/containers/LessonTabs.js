@@ -1,17 +1,121 @@
-import React from 'react'
+import React from 'react';
+import LessonService from "../services/LessonService";
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+import LessonTabItem from "../components/LessonTabItem";
 
-
-export default class LessonTabs
-    extends React.Component {
-    render() { return(
-
-        <ul className="nav nav-tabs">
-
-            <li className="nav-item"><a className="nav-link active"
-                                    href="#">Active Tab</a></li>
-
-            <li className="nav-item"><a className="nav-link"
-                                    href="#">Another Tab</a></li>
-
-        </ul>
-    );}}
+export default class LessonTabs extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            moduleId: '',
+            courseId: '',
+            lesson: {title: ''},
+            lessons: []
+        };
+        this.setModuleId = this.setModuleId.bind(this);
+        this.setCourseId = this.setCourseId.bind(this);
+        this.setLessonTitle = this.setLessonTitle.bind(this);
+        this.createLesson = this.createLesson.bind(this);
+        this.deleteLesson = this.deleteLesson.bind(this);
+        this.lessonService = LessonService.instance;
+    }
+    setModuleId(moduleId) {
+        this.setState({moduleId: moduleId});
+    }
+    setCourseId(courseId) {
+        this.setState({courseId: courseId});
+    }
+    setLessonTitle(event) {
+        this.setState({lesson: {
+                title: event.target.value
+            }});
+    }
+    setLessons(lessons) {
+        this.setState({lessons: lessons});
+    }
+    createLesson() {
+        let newLesson;
+        if(this.state.lesson.title === '') {
+            newLesson = {title: 'New Lesson'};
+        } else {
+            newLesson = this.state.lesson;
+        }
+        this.lessonService
+            .createLesson(this.state.courseId, this.state.moduleId, newLesson)
+            .then(() => {
+                this.findAllLessonsForModule(this.state.courseId, this.state.moduleId);
+            });
+        document.getElementById('lessonTitleFld').value = '';
+        this.setState({lesson: {title: ''}});
+    }
+    deleteLesson(lessonId) {
+        if(window.confirm('Are you sure you want to delete?')) {
+            this.lessonService
+                .deleteLesson(lessonId)
+                .then(() => {
+                    this.findAllLessonsForModule(this.state.courseId, this.state.moduleId);
+                });
+        }
+    }
+    componentDidMount() {
+        this.setModuleId(this.props.moduleId);
+        this.setCourseId(this.props.courseId);
+    }
+    componentWillReceiveProps(newProps) {
+        this.setModuleId(newProps.moduleId);
+        this.setCourseId(newProps.courseId);
+        this.findAllLessonsForModule(newProps.courseId, newProps.moduleId);
+    }
+    findAllLessonsForModule(courseId, moduleId) {
+        this.lessonService
+            .findAllLessonsForModule(courseId, moduleId)
+            .then((lessons) => {this.setLessons(lessons);});
+    }
+    renderLessons() {
+        if(this.state.lessons === null) {
+            return null;
+        }
+        let lessons = this.state.lessons.map((lesson) => {
+            return <LessonTabItem key={lesson.id}
+                                  lesson={lesson}
+                                  moduleId={this.state.moduleId}
+                                  courseId={this.state.courseId}
+                                  delete={this.deleteLesson}/>
+        });
+        return (
+            lessons
+        )
+    }
+    render() {
+        if(this.state.lessons === null) {
+            return null;
+        } else {
+            return (
+                <div>
+                    <ul className="nav nav-tabs justify-content-right">
+                        {this.renderLessons()}
+                        <li id="addLessonFld" className="nav-item">
+                            <a className="nav-link active" href="#">
+                                <div className='row'>
+                                    <div className='col-8'>
+                                        <input className='form-control form-control-sm'
+                                               id='lessonTitleFld'
+                                               placeholder='New Lesson'
+                                               value={this.state.lesson.title}
+                                               onChange={this.setLessonTitle}/>
+                                    </div>
+                                    <div className='col-1'>
+                                        <button className='btn btn-success btn-sm'
+                                                onClick={this.createLesson}>
+                                            <i className="fa fa-check"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            )
+        }
+    }
+}

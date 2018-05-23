@@ -24,11 +24,11 @@ export default class CourseManager extends Component
                 {/*<CourseEditor/>*/}
                 {/*<LessonTabs/>*/}
                 {/*<ModuleList/>*/}
-                <div className="card-deck">
-                    <CourseCard/>
-                    <CourseCard/>
-                    <CourseCard/>
-            </div>
+                {/*<div className="card-deck">*/}
+                    {/*<CourseCard/>*/}
+                    {/*<CourseCard/>*/}
+                    {/*<CourseCard/>*/}
+            {/*</div>*/}
             </div>
             </Router>
         )

@@ -33,6 +33,13 @@ class CourseService {
         })
     }
 
+    getCourseById(courseId) {
+        return fetch(COURSE_API_URL + "/" + courseId)
+            .then(function(response){
+                return response.json();
+            });
+    }
+
     static get instance() {
         if(!this[_singleton])
             this[_singleton] = new CourseService(_singleton);

@@ -1,6 +1,6 @@
 import React from 'react';
 import LessonTabs from './LessonTabs'
-import TopicPills from './TopicPills'
+
 
 export default class ModuleEditor
     extends React.Component {
@@ -41,11 +41,6 @@ setModuleId(moduleId) {
     render() {
         return (
             <div>
-            <h1>Module Editor</h1>
-        {this.state.courseId},
-                {this.state.moduleId}
-                <LessonTabs/>
-                <br/>
-                <TopicPills/>
-                </div>
+                <LessonTabs moduleId={this.state.moduleId} courseId={this.state.courseId}/>
+            </div>
         )}}
