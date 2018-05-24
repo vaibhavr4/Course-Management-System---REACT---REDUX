@@ -69,9 +69,11 @@ class CourseList extends React.Component {
 
     render() {
         return (
+
             <div>
+                <br/><br/>
                 <h2>Course List</h2>
-                <table className="table">
+                <table className="table table-hover table-striped">
                     <tbody>
                     <tr>
                         <td><input className="form-control" id="titleFld"
@@ -84,8 +86,8 @@ class CourseList extends React.Component {
                     </tbody>
 
                 </table>
-                <table className="table">
-                    <thead><tr><th>Title</th>
+                <table className="table table-hover table-striped">
+                    <thead className="coursehead"><tr><th>Title</th>
                         <th>Owner</th>
                         <th>Last modified</th>
                         <th></th></tr>

@@ -65,10 +65,16 @@ export default class ModuleList
     }
 
     createModule() {
+        let newModule;
+        if (this.state.module === undefined || this.state.module.title === '') {
+            newModule = {title: 'New Module'};
+        } else {
+            newModule = this.state.module;
+        }
         this.moduleService
             .createModule
             (this.state.courseId,
-                this.state.module)
+                newModule)
             .then(() => {
                 this.findAllModulesForCourse
                 (this.state.courseId);
@@ -91,7 +97,7 @@ export default class ModuleList
                                 
                                 delete={this.deleteModule} courseId={this.state.courseId}/>
             )});
-        return (<ul className="list-group"> {modules}</ul>)
+        return (<table className="table table-striped table-hover"><tbody> {modules}</tbody></table>)
     }
 
     renderLessons() {

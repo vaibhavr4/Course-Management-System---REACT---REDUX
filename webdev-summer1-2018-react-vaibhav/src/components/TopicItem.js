@@ -12,11 +12,7 @@ export default class TopicItem extends React.Component {
                       to={`/course/`+ this.props.courseId+ `/module/`+this.props.moduleId+ `/lesson/`+this.props.lessonId}
                       role="pill"
                       data-toggle="pill"
-                      activeStyle={{
-                          fontWeight: 'bold',
-                          color: 'red',
-
-                      }}>
+                      >
                     <div className='row'>
                         <div className='col-8'>
                             {this.props.topic.title}

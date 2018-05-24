@@ -26,8 +26,8 @@ class CourseRow extends React.Component {
                     {this.props.course.title}
                 </Link>
                 </td>
-                <td>me</td>
-                <td>{this.getAddTime(this.props.course.modified)}</td>
+                <td><b>me</b></td>
+                <td><b>{this.getAddTime(this.props.course.modified)}</b></td>
                 <td><button className="btn btn-danger"
                             onClick={() => {this.props.delete(this.props.course.id)}}>
                     Delete

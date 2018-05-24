@@ -8,13 +8,13 @@ export default class LessonTabItem extends React.Component {
     render() {
         return (
             <li className="nav-item">
-                <NavLink className="nav-link" to={`/course/
-                ${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}
-                         activeStyle={{
-                             fontWeight: 'bold',
-                             color: 'red',
+                <NavLink className="nav-link" activeStyle={{
+                    fontWeight: 'bold',
+                    color: 'red',
 
-                         }}>
+                }} exact to={`/course/
+                ${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lesson.id}`}
+                         >
                     {this.props.lesson.title}
                     &nbsp;&nbsp;
                     <span className="float-right">

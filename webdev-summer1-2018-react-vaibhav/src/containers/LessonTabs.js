@@ -104,7 +104,7 @@ export default class LessonTabs extends React.Component {
             return (
                 <div>
                     <ul className="nav nav-tabs justify-content-right">
-                        {this.renderLessons()}
+                        {this.renderLessons()} &nbsp; &nbsp;
                         <li id="addLessonFld" className="nav-item">
                             <a className="nav-link" href="#">
                                 <div className='row'>
@@ -127,7 +127,7 @@ export default class LessonTabs extends React.Component {
                     </ul>
                     {/*<ul><br/>*/}
                         {/*<TopicPill lessonId={this.state.lessonId} moduleId={this.state.moduleId} courseId={this.state.courseId}/>*/}
-                    {/*</ul>*/}
+                    {/*</ul>*/}<br/>
                     <div className='col-8'>
                         {this.renderTopics()}
                     </div>

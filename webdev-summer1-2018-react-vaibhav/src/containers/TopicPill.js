@@ -105,9 +105,9 @@ export default class TopicPill extends React.Component {
         } else {
             return (
                 <div>
-                    <ul className="nav nav-pills justify-content-right">
-                        {this.renderTopics()}
-                        <li id="addLessonFld" className="nav-item">
+                    <ul className="nav nav-pills justify-content-right" >
+                        {this.renderTopics()}  &nbsp; &nbsp;
+                        <li id="addTopicFld" className="nav-item">
                             <a className="nav-link" href="#">
                                 <div className='row'>
                                     <div className='col-8'>

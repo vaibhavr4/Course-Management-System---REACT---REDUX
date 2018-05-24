@@ -9,23 +9,25 @@ export default class ModuleListItem
     }
     render() {
         return (
-            <li className="list-group-item">
-                <NavLink to={`/course/
-                ${this.props.courseId}/module/${this.props.module.id}`}
-                         activeStyle={{
-                             fontWeight: 'bold',
-                             color: 'red',
+    <tr>
+            <td>
+                <NavLink activeStyle={{
+                    fontWeight: 'bold',
+                    color: '#D3CD4A',
 
-                         }}>
+                }} exact to={`/course/
+                ${this.props.courseId}/module/${this.props.module.id}`}
+                         >
                     {this.props.module.title}
                 </NavLink>
                 <span className="float-right">
-                <button onClick={() =>
+                <button className="btn btn-danger" onClick={() =>
                 {this.props.delete
                 (this.props.module.id)}}>
-                    <i className="fa fa-trash"></i>
+                    <span className="-align-center">  <i className="fa fa-trash fa-2x"></i></span>
                 </button>
 
                 </span>
-            </li>
+            </td>
+    </tr>
         );}}
