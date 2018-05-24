@@ -8,6 +8,7 @@ import './style.css';
 import {BrowserRouter as Router, Link, Route}
     from 'react-router-dom'
 import CourseEditor from "./containers/CourseEditor";
+import ModuleEditor from "./containers/ModuleEditor";
 
 const Home = () => {
     return(
@@ -23,7 +24,7 @@ const Home = () => {
         </div>
 
         <div class="topnav">
-            <p align="center"><Link to='/courses'>Course Editor</Link></p>
+            <p align="center"><Link to='/courses'>Course Manager</Link></p>
         </div>
 
         </body>
@@ -32,25 +33,26 @@ const Home = () => {
 };
 
 
-// const App = () => {
-//     return(
-//         <Router>
-//             <div>
-//                 <Route exact path='/'
-//                        component={Home}/>
-//                 <Route exact path='/courses'
-//                        component={CourseManager}/>
-//                 <Route exact path='/CourseEditor/:courseId'
-//                        component={CourseEditor}/>
-//
-//
-//             </div>
-//         </Router>);
-// };
+const App = () => {
+    return(
+        <Router>
+            <div>
+                <Route exact path='/'
+                       component={Home}/>
+                <Route exact path='/courses'
+                       component={CourseManager}/>
+                <Route exact path='/CourseEditor/:courseId'
+                       component={CourseEditor}/>
+                <Route exact path='/CourseEditor/:courseId'
+                       component={ModuleEditor}/>
+
+
+
+            </div>
+        </Router>);
+};
 
 ReactDOM.render(
-    <div className="container-fluid">
-        <CourseManager/>
-    </div>,
+    <App/>,
     document.getElementById('root')
 );

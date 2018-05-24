@@ -33,12 +33,14 @@ export default class ModuleList
     }
 
     deleteModule(moduleId) {
-        this.moduleService
-            .deleteModule(moduleId)
-            .then(() => {
-                this.findAllModulesForCourse
-                (this.state.courseId)
-            });
+        if (window.confirm('Are you sure you want to delete?')) {
+            this.moduleService
+                .deleteModule(moduleId)
+                .then(() => {
+                    this.findAllModulesForCourse
+                    (this.state.courseId)
+                });
+        }
     }
 
     findAllModulesForCourse(courseId) {
@@ -109,8 +111,7 @@ export default class ModuleList
         <div className="row">
             <div className="col-4">
 
-            <h4>Modules for courseId:
-                {this.state.courseId}</h4>
+
             <input className="form-control"
                    onChange={this.titleChanged}
                    value={this.state.module.title}

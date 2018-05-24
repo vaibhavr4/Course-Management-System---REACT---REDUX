@@ -20,7 +20,7 @@ export default class TopicItem extends React.Component {
                         <div className='col-1'>
                             <button onClick={() => {this.props.delete(this.props.topic.id)}}
                                     className='btn btn-danger btn-sm'>
-                                <i className="fa fa-trash"/>
+                                <i className="fa fa-minus"/>
                             </button>
                         </div>
                     </div>

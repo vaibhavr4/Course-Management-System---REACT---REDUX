@@ -48,7 +48,7 @@ export default class CourseEditor
 
     render() { return(
         <div>
-            <h3>Course {this.renderTitle()}</h3>
+            <div className="table table-hover table-striped"><tbody><tr><td>  <h3>Course {this.renderTitle()}</h3></td></tr></tbody></div>
         <div>
             {/*<div className="col-4">*/}
                 <ModuleList courseId={this.state.courseId}/>

@@ -108,7 +108,7 @@ export default class TopicPill extends React.Component {
                     <ul className="nav nav-pills justify-content-right" >
                         {this.renderTopics()}  &nbsp; &nbsp;
                         <li id="addTopicFld" className="nav-item">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="localhost:3000/courses/:courseId/module/:moduleId">
                                 <div className='row'>
                                     <div className='col-8'>
                                         <input className='form-control form-control-sm'

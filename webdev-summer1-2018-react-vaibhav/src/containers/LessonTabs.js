@@ -106,7 +106,7 @@ export default class LessonTabs extends React.Component {
                     <ul className="nav nav-tabs justify-content-right">
                         {this.renderLessons()} &nbsp; &nbsp;
                         <li id="addLessonFld" className="nav-item">
-                            <a className="nav-link" href="#">
+                            <a className="nav-link" href="localhost:3000/courses/:courseId/module/:moduleId">
                                 <div className='row'>
                                     <div className='col-8'>
                                         <input className='form-control form-control-sm'
