@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 export default class TopicItem extends React.Component {
     constructor(props) {
@@ -8,11 +8,12 @@ export default class TopicItem extends React.Component {
     render() {
         return (
             <li className="nav-item active">
-                <Link className="nav-link"
-                      to={`/course/`+ this.props.courseId+ `/module/`+this.props.moduleId+ `/lesson/`+this.props.lessonId}
-                      role="pill"
-                      data-toggle="pill"
-                      >
+                <NavLink className="nav-link" activeStyle={{
+                    fontWeight: 'bold',
+                    color: 'red',
+
+                }} exact to={`/topic/${this.props.topic.id}`}
+                >
                     <div className='row'>
                         <div className='col-8'>
                             {this.props.topic.title}
@@ -24,7 +25,7 @@ export default class TopicItem extends React.Component {
                             </button>
                         </div>
                     </div>
-                </Link>
+                </NavLink>
             </li>
         )
     }

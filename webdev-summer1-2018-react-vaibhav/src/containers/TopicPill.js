@@ -3,6 +3,9 @@ import LessonService from "../services/LessonService";
 import TopicService from "../services/TopicService"
 import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import TopicItem from "../components/TopicItem";
+import LessonEditor from "./LessonEditor";
+import {BrowserRouter as Router,Route} from 'react-router-dom'
+import WidgetListEditor from './WidgetListEditor'
 
 
 export default class TopicPill extends React.Component {
@@ -99,11 +102,16 @@ export default class TopicPill extends React.Component {
             topics
         )
     }
+
+    renderWidgets() {
+        return <Route path='/topic/:topicId' exact component={WidgetListEditor}/>;
+    }
     render() {
         if(this.state.topics === null) {
             return null;
         } else {
             return (
+                <Router>
                 <div>
                     <ul className="nav nav-pills justify-content-right" >
                         {this.renderTopics()}  &nbsp; &nbsp;
@@ -127,8 +135,13 @@ export default class TopicPill extends React.Component {
                             </a>
                         </li>
                     </ul>
+                    <div>
+                    <Route path={`/topic/:topicId`}
+                           component={WidgetListEditor}/>
+                    </div>
 
                 </div>
+                </Router>
             )
         }
     }

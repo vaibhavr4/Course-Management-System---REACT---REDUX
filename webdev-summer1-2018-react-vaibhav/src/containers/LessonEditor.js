@@ -1,5 +1,7 @@
 import React from 'react';
 import TopicPill from './TopicPill'
+import WidgetListEditor from './WidgetListEditor'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
 export default class LessonEditor
@@ -51,7 +53,11 @@ export default class LessonEditor
 
     render() {
         return (
+
             <div>
                 <TopicPill moduleId={this.state.moduleId} courseId={this.state.courseId} lessonId={this.state.lessonId}/>
+
             </div>
+
+
         )}}
