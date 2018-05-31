@@ -61,7 +61,7 @@ class WidgetList extends Component {
                 </div>
                 <div className="d-flex pr-2">
                     <button className="btn btn-success m-auto" hidden={this.props.previewMode}
-                            onClick={this.props.save}>
+                            onClick={this.saveToServer}>
                         Save
                     </button>
                 </div>
