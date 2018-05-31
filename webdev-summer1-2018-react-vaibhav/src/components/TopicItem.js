@@ -12,7 +12,7 @@ export default class TopicItem extends React.Component {
                     fontWeight: 'bold',
                     color: 'red',
 
-                }} exact to={`/topic/${this.props.topic.id}`}
+                }} exact to={`/course/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${this.props.topic.id}`}
                 >
                     <div className='row'>
                         <div className='col-8'>

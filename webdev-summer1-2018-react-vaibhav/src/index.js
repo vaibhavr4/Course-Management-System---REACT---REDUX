@@ -61,8 +61,8 @@ import ModuleEditor from "./containers/ModuleEditor";
 let store = createStore(widgetReducer)
 
 ReactDOM.render(
-    <Provider store={store}>
+    <div>
         <CourseManager/>
-    </Provider>,
+    </div>,
     document.getElementById('root')
 );

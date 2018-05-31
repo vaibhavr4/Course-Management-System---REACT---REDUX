@@ -104,15 +104,18 @@ export default class TopicPill extends React.Component {
     }
 
     renderWidgets() {
-        return <Route path='/topic/:topicId' exact component={WidgetListEditor}/>;
+        return <Route path='/topic/:topicId' component={WidgetListEditor}/>;
     }
     render() {
         if(this.state.topics === null) {
             return null;
         } else {
             return (
-                <Router>
+
+
                 <div>
+
+                    <div>
                     <ul className="nav nav-pills justify-content-right" >
                         {this.renderTopics()}  &nbsp; &nbsp;
                         <li id="addTopicFld" className="nav-item">
@@ -135,13 +138,16 @@ export default class TopicPill extends React.Component {
                             </a>
                         </li>
                     </ul>
-                    <div>
-                    <Route path={`/topic/:topicId`}
-                           component={WidgetListEditor}/>
                     </div>
 
+                    <div>
+                        <Route path={`/course/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId`}
+                               component={WidgetListEditor}/>
+                    </div>
+
+
                 </div>
-                </Router>
+
             )
         }
     }

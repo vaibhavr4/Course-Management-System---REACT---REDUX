@@ -102,6 +102,7 @@ export default class LessonTabs extends React.Component {
             return null;
         } else {
             return (
+
                 <div>
                     <ul className="nav nav-tabs justify-content-right">
                         {this.renderLessons()} &nbsp; &nbsp;
