@@ -12,30 +12,75 @@ const Heading = ({widget, preview, headingTextChanged, headingSizeChanged, headi
 
     let nameElem
   return(
-    <div>
-      <div hidden={preview}>
-
-          <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
-                 value={widget.text}
-                 ref={node => inputElem = node}/> <br/> <br/>
-          <select onChange={() => headingSizeChanged(widget.id, selectElem.value)}
-                  value={widget.size}
-                  ref={node => selectElem = node}>
-            <option value="1">Heading 1</option>
-            <option value="2">Heading 2</option>
-            <option value="3">Heading 3</option>
-          </select> <br/> <br/>
-          <input onChange={() => headingNameChanged(widget.id, nameElem.value)}
-                 value={widget.name}
-                 ref={node => nameElem = node}/> <br/> <br/>
-          <div className="d-flex float-right my-auto pr-2">
-          <h3>Preview</h3>
+      <html>
+      <head>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                  crossOrigin="anonymous"></script>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                crossOrigin="anonymous"/>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                  integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                  crossOrigin="anonymous"></script>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+                integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                crossOrigin="anonymous"/>
+      </head>
+      <body>
+      <div className="container widget-container"
+           style={widgetContainerStyle}>
+          <div className="col-md-12">
+              <div hidden={preview}>
+                  <div className="row">
+                      <div className="col-md-12">
+                          <div className="form-group">
+                              <input onChange={() => headingTextChanged(widget.id, inputElem.value)}
+                                     value={widget.text}
+                                     ref={node => inputElem = node} className="form-control"/> <br/>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="row">
+                      <div className="col-md-12">
+                          <div className="form-group">
+                              <select onChange={() => headingSizeChanged(widget.id, selectElem.value)}
+                                      value={widget.size}
+                                      ref={node => selectElem = node} className="form-control">
+                                  <option value="1">Heading 1</option>
+                                  <option value="2">Heading 2</option>
+                                  <option value="3">Heading 3</option>
+                              </select> <br/>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="row">
+                      <div className="col-md-12">
+                          <div className="form-group">
+                              <input onChange={() => headingNameChanged(widget.id, nameElem.value)}
+                                     value={widget.name}
+                                     ref={node => nameElem = node} className="form-control"/> <br/>
+                          </div>
+                      </div>
+                  </div>
+                  <div className="row">
+                      <div className="col-md-12">
+                          <div className="form-group">
+                              <h5>Preview</h5>
+                          </div></div></div></div>
+              <div className="row">
+                  <div className="col-md-12">
+                      <div className="form-group">
+                          {widget.size == 1 && <h1>{widget.text}</h1>}
+                          {widget.size == 2 && <h2>{widget.text}</h2>}
+                          {widget.size == 3 && <h3>{widget.text}</h3>}
+                      </div>
+                  </div>
+              </div>
           </div>
       </div>
-      {widget.size == 1 && <h1>{widget.text}</h1>}
-      {widget.size == 2 && <h2>{widget.text}</h2>}
-      {widget.size == 3 && <h3>{widget.text}</h3>}
-    </div>
+      </body>
+      </html>
   )
 }
 const dispathToPropsMapper = dispatch => ({
@@ -58,20 +103,61 @@ const Paragraph = ({widget, preview, paraTextChanged, paraNameChanged}) => {
     let inputElem
     let nameElem
     return(
-        <div>
-    <div hidden={preview}>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossOrigin="anonymous"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                  integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                  crossOrigin="anonymous"/>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                    crossOrigin="anonymous"></script>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+                  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                  crossOrigin="anonymous"/>
+        </head>
+        <body>
+        <div className="container widget-container"
+             style={widgetContainerStyle}>
+            <div className="col-md-12">
+                <div hidden={preview}>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
         <textarea onChange={() => paraTextChanged(widget.id, inputElem.value)}
                   ref={node => inputElem= node}
-                  value={widget.text}>
-    </textarea> <br/> <br/>
-        <input onChange={() => paraNameChanged(widget.id, nameElem.value)}
-               value={widget.name}
-               ref={node => nameElem = node}/> <br/> <br/>
-        <h3>Paragraph Preview</h3>
-    </div>
-            <p> {widget.text} </p>
-
+                  value={widget.text} className="form-control">
+    </textarea> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <input onChange={() => paraNameChanged(widget.id, nameElem.value)}
+                                       value={widget.name}
+                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <h4>Paragraph Preview</h4>
+                            </div></div></div></div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <p> {widget.text} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        </body>
+        </html>
     )
 }
 
@@ -96,20 +182,59 @@ const Image = ({widget, preview, imageTextChanged, imageNameChanged}) => {
     let inputElem3
     let nameElem
     return(
-        <div>
-        <div hidden={preview}>
-            <input onChange={() => imageTextChanged(widget.id, inputElem3.value)}
-                   ref={node3 => inputElem3= node3}
-                   value={widget.text}
-                   /> <br/> <br/>
-            <input onChange={() => imageNameChanged(widget.id, nameElem.value)}
-                   value={widget.name}
-                   ref={node => nameElem = node}/> <br/> <br/>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossOrigin="anonymous"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                  integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                  crossOrigin="anonymous"/>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                    crossOrigin="anonymous"></script>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+                  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                  crossOrigin="anonymous"/>
+        </head>
+        <body>
+        <div className="container widget-container"
+             style={widgetContainerStyle}>
+            <div className="col-md-12">
+                <div hidden={preview}>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <input onChange={() => imageTextChanged(widget.id, inputElem3.value)}
+                                       ref={node3 => inputElem3= node3}
+                                       value={widget.text} className="form-control"
+                                /> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <input onChange={() => imageNameChanged(widget.id, nameElem.value)}
+                                       value={widget.name}
+                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
 
-    <h3>Image Preview</h3>
-        </div>
-            <img src={widget.text} alt={widget.text} height="42" width="42"/>
-        </div>
+                                <h4>Image Preview</h4>
+                            </div></div></div>   </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+                            <div className="col-md-2">
+                                <img src={widget.text} alt={widget.text} />
+                            </div>
+                        </div></div></div></div></div>
+        </body></html>
 
     )
 }
@@ -136,30 +261,70 @@ const List = ({widget, preview, listTextChanged, listTypeChanged, listNameChange
     let inputElem2
     let nameElem
    return(
-       <div>
-    <div hidden={preview}>
-    <h2>List {widget.listType}</h2>
+       <html>
+       <head>
+           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                   crossOrigin="anonymous"></script>
+           <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                 integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                 crossOrigin="anonymous"/>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                   integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                   crossOrigin="anonymous"></script>
+           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+                 integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                 crossOrigin="anonymous"/>
+       </head>
+       <body>
+       <div className="container widget-container"
+            style={widgetContainerStyle}>
+           <div className="col-md-12">
+               <div hidden={preview}>
+                   <div className="row">
+                       <div className="col-md-12">
+                           <div className="form-group">
     <textarea onChange={() => listTextChanged(widget.id, inputElem2.value)}
-           ref={node2 => inputElem2= node2}
-           value={widget.text}  /> <br/> <br/>
+              ref={node2 => inputElem2= node2}
+              value={widget.text}  className="form-control"/> <br/>
+                           </div>
+                       </div>
+                   </div>
+                   <div className="row">
+                       <div className="col-md-12">
+                           <div className="form-group">
 
-        <select onChange={() => listTypeChanged(widget.id, selectElem2.value)}
-            ref={node2 => selectElem2=node2}
-                value={widget.listType}>
-            <option value="1">Ordered List</option>
-        <option value="2">Unordered List</option>
-        </select> <br/> <br/>
+                               <select onChange={() => listTypeChanged(widget.id, selectElem2.value)}
+                                       ref={node2 => selectElem2=node2}
+                                       value={widget.listType} className="form-control">
+                                   <option value="ordered">Ordered List</option>
+                                   <option value="unordered">Unordered List</option>
+                               </select> <br/>
+                           </div>
+                       </div>
+                   </div>
+                   <div className="row">
+                       <div className="col-md-12">
+                           <div className="form-group">
 
-        <input onChange={() => listNameChanged(widget.id, nameElem.value)}
-               value={widget.name}
-               ref={node => nameElem = node}/> <br/> <br/>
+                               <input onChange={() => listNameChanged(widget.id, nameElem.value)}
+                                      value={widget.name}
+                                      ref={node => nameElem = node} className="form-control"/> <br/>
+                           </div>
+                       </div>
+                   </div>
+                   <div className="row">
+                       <div className="col-md-12">
+                           <div className="form-group">
 
-
-    <h3> Preview</h3>
-</div>
-    {widget.listType== 1 && <div>{textToOrderedList(widget.text)} </div>}
-    {widget.listType== 2 && <div> {textToUnorderedList(widget.text)}</div>}
-    </div>
+                               <h5> Preview</h5>
+                           </div></div></div></div>
+               <div className="row">
+                   <div className="col-md-12">
+                       {widget.listType== "ordered" && <div>{textToOrderedList(widget.text)} </div>}
+                       {widget.listType== "unordered" && <div> {textToUnorderedList(widget.text)}</div>}
+                   </div></div>
+           </div></div></body></html>
    )
 }
 
@@ -213,24 +378,72 @@ const Link = ({widget, preview, linkTextChanged, linkNameChanged, linkDispChange
     let nameElem
     let dispName
     return(
-        <div>
-            <div hidden={preview}>
-                <input onChange={() => linkTextChanged(widget.id, inputElem3.value)}
-                       ref={node3 => inputElem3= node3}
-                       value={widget.text}
-                /> <br/> <br/>
-                <input onChange={() => linkDispChanged(widget.id, dispName.value)}
-                       ref={node3 => dispName= node3}
-                       value={widget.linkName}
-                /> <br/> <br/>
-                <input onChange={() => linkNameChanged(widget.id, nameElem.value)}
-                       value={widget.name}
-                       ref={node => nameElem = node}/> <br/> <br/>
+        <html>
+        <head>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                    crossOrigin="anonymous"></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                  integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                  crossOrigin="anonymous"/>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                    crossOrigin="anonymous"></script>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+                  integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                  crossOrigin="anonymous"/>
+        </head>
+        <body>
+        <div className="container widget-container"
+             style={widgetContainerStyle}>
+            <div className="col-md-12">
+                <div hidden={preview}>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <input onChange={() => linkTextChanged(widget.id, inputElem3.value)}
+                                       ref={node3 => inputElem3= node3}
+                                       value={widget.text} className="form-control"
+                                /> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+                                <input onChange={() => linkDispChanged(widget.id, dispName.value)}
+                                       ref={node3 => dispName= node3}
+                                       value={widget.linkName} className="form-control"
+                                /> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
 
-                <h3>Link Preview</h3>
-            </div>
-            <a href={widget.text}>{widget.linkName}</a>
-        </div>
+                                <input onChange={() => linkNameChanged(widget.id, nameElem.value)}
+                                       value={widget.name}
+                                       ref={node => nameElem = node} className="form-control"/> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <div className="form-group">
+
+
+                                <h4>Link Preview</h4>
+                            </div></div></div></div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="form-group">
+
+                            <a href={widget.text}>{widget.linkName}</a>
+                        </div>
+                    </div></div></div>
+        </div></body></html>
+
 
     )
 }
@@ -257,44 +470,87 @@ const LinkContainer = connect(stateToPropsMapperLink,dispatchToPropsMapperLink)(
 const Widget = ({widget, preview, dispatch,widgetLength}) => {
   let selectElement
   return(
-    <li>
+      <html>
+      <head>
+          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                  integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                  crossOrigin="anonymous"></script>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+                integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                crossOrigin="anonymous"/>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+                  integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                  crossOrigin="anonymous"></script>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+                integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                crossOrigin="anonymous"/>
+      </head>
+      <body>
       <div hidden={preview}>
-      {widget.id} {widget.widgetType}
+          <div className="container widget-container"
+               style={widgetContainerStyle}>
+              <div className="row">
+                  <div className="col-md-12 text-dark pt-2">
+                      <div className="row flex-row pb-1">
+                          <div className="col-md-3 d-inline-flex">
+                              <h4>{widget.widgetType}</h4></div>
+                          <div className="col-md-9">
 
-      <select value={widget.widgetType}
-              onChange={e =>
-          dispatch({
-            type: 'SELECT_WIDGET_TYPE',
-            id: widget.id,
-            widgetType: selectElement.value
-          })} ref={node => selectElement = node}>
-        <option>Heading</option>
-        <option>Paragraph</option>
-        <option>List</option>
-        <option>Image</option>
-          <option>Link</option>
-      </select>
+                              <div className="d-inline-flex pr-2 float-right">
+                                  <button onClick={e => (
+                                      dispatch({type: DELETE_WIDGET, id: widget.id})
+                                  )} className="btn btn-danger"><i className="fas fa-times"></i></button>
+                              </div>
 
-          <button onClick={e => (
-              dispatch({type: constants.DECREASE_ORDER_WIDGET, widgetOrder: widget.widgetOrder})
-          )} disabled={(widget.widgetOrder == 1)} className="btn btn-danger my-2 my-sm-0" type="button">Up</button>
 
-          <button onClick={e => (
-              dispatch({type: constants.INCREASE_ORDER_WIDGET, widgetOrder: widget.widgetOrder})
-          )}  disabled={(widget.widgetOrder==widgetLength)} className="btn btn-danger my-2 my-sm-0" type="button">Down</button>
+                              <div className="d-inline-flex pr-2 float-right">
+                                  <button onClick={e => (
+                                      dispatch({type: constants.INCREASE_ORDER_WIDGET, widgetOrder: widget.widgetOrder})
+                                  )} disabled={(widget.widgetOrder == widgetLength)} className="btn btn-warning"><i
+                                      className="fas fa-arrow-down"></i></button>
+                              </div>
 
-      <button onClick={e => (
-        dispatch({type: DELETE_WIDGET, id: widget.id})
-      )}>Delete</button>
+
+                              <div className="d-inline-flex pr-2 float-right">
+                                  <button onClick={e => (
+                                      dispatch({type: constants.DECREASE_ORDER_WIDGET, widgetOrder: widget.widgetOrder})
+                                  )} disabled={(widget.widgetOrder == 1)} className="btn btn-warning"><i
+                                      className="fas fa-arrow-up"></i></button>
+                              </div>
+
+
+                              <div className="d-inline-flex pr-1 float-right my-auto" style={widgetListStyle}>
+                                  <select value={widget.widgetType}
+                                          onChange={e =>
+                                              dispatch({
+                                                  type: 'SELECT_WIDGET_TYPE',
+                                                  id: widget.id,
+                                                  widgetType: selectElement.value
+                                              })} ref={node => selectElement = node}>
+                                      <option>Heading</option>
+                                      <option>Paragraph</option>
+                                      <option>List</option>
+                                      <option>Image</option>
+                                      <option>Link</option>
+                                  </select>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
       <div>
-        {widget.widgetType==='Heading' && <HeadingContainer widget={widget}/>}
-        {widget.widgetType==='Paragraph' && <ParaContainer widget={widget}/>}
-        {widget.widgetType==='List' && <ListContainer widget={widget}/>}
-        {widget.widgetType==='Image' && <ImageContainer widget={widget}/>}
-          {widget.widgetType==='Link' && <LinkContainer widget={widget}/>}
+          {widget.widgetType === 'Heading' && <HeadingContainer widget={widget}/>}
+          {widget.widgetType === 'Paragraph' && <ParaContainer widget={widget}/>}
+          {widget.widgetType === 'List' && <ListContainer widget={widget}/>}
+          {widget.widgetType === 'Image' && <ImageContainer widget={widget}/>}
+          {widget.widgetType === 'Link' && <LinkContainer widget={widget}/>}
       </div>
-    </li>
+
+      </body>
+      </html>
   )
 }
 const WidgetContainer = connect(state => ({
@@ -302,3 +558,12 @@ const WidgetContainer = connect(state => ({
 }))(Widget)
 export default WidgetContainer
 
+var widgetListStyle =
+    {
+        height: "37px" , borderRadius : "3px"
+    }
+
+var widgetContainerStyle =
+    {
+        border: "solid" , borderWidth: "thin" , width:"1000px", borderColor: "gray" , borderRadius: "3px"
+    }

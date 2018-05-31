@@ -297,7 +297,7 @@ export const widgetReducer = (state = {widgets: [], preview: false}, action) => 
               name: 'Widget Name',
             widgetType: 'Paragraph',
             size: '2',
-              listType: '1',
+              listType: 'ordered',
               widgetOrder: state.widgets.length + 1
           }
         ]
